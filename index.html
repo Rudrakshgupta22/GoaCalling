@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Goa Getaway | Are You Coming?</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="A fun, tropical invite to an unforgettable Goa trip." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Montserrat:wght@400;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Animated gradient + floating circles -->
+  <div class="bg-animated">
+    <div class="bg-circle bg-circle-1"></div>
+    <div class="bg-circle bg-circle-2"></div>
+    <div class="bg-circle bg-circle-3"></div>
+  </div>
+
+  <header class="site-header">
+    <div class="brand">
+      <span class="brand-mark">Goa Trip!!</span><span class="brand-dot">.</span>
+    </div>
+  </header>
+
+  <main class="main">
+    <!-- Intro / Question card -->
+    <section id="intro-section" class="card intro-card">
+      <div class="badge">Beach • Parties • Sunsets</div>
+      <h1>Are you interested<br />to come to <span class="highlight">Goa</span>?</h1>
+      <p class="subtitle">
+        Tropical sunsets, palm trees, and ocean vibes are calling your name.
+      </p>
+
+      <div class="button-row">
+        <button id="yes-btn" class="btn btn-yes">
+          Yes, let's go! 🏖️
+        </button>
+        <button id="no-btn" class="btn btn-no">
+          Nope, I'll stay home 🙈
+        </button>
+      </div>
+
+      <p id="tease-text" class="tease-text"></p>
+
+      <div class="meta">
+        <span>Swipe, tap, or click </span>
+      </div>
+    </section>
+
+    <!-- Trip details layout (initially hidden) -->
+    <section id="trip-section" class="card trip-card hidden">
+      <div class="trip-grid">
+        <div class="trip-poster">
+          <video id="goa-video" class="trip-video" playsinline preload="auto">
+            <source src="goa.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <div class="poster-overlay">
+            <span class="poster-label">Goa Escape 2026</span>
+            <span class="poster-tagline">Sun • Sand • Sound</span>
+          </div>
+        </div>
+
+        <div class="trip-content">
+          <h2>Goa Escape • February 19 - 22 , 2026</h2>
+          <p class="trip-location">Beaches &amp; Beyond • Goa, India</p>
+
+          <ul class="trip-highlights">
+            <li>🌙 Midnight pool party under the stars with vibes and music</li>
+            <li>🏖️ A handpicked exploration of North Goa’s most exciting spots</li>
+            <li>🌊 A soulful journey through the peaceful beauty of South Goa</li>
+            <li>🎁 A surprise signature experience curated specially by ELC</li>
+            <li>🪂 Thrilling parasailing adventure over the blue Goan coastline</li>
+          </ul>
+
+          <div class="trip-actions">
+            <a href="https://forms.gle/E7maXDjAdweL1kNs5" class="btn btn-primary" id="join-btn" target="_blank" rel="noopener noreferrer">
+              Join Now
+            </a>
+            <button class="btn btn-secondary" id="share-whatsapp">
+              Share on WhatsApp
+            </button>
+          </div>
+
+          <p class="trip-note">
+            Limited spots • Curated experiences • Zero boring moments.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Confetti canvas -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <script src="web.js"></script>
+</body>
+</html>
