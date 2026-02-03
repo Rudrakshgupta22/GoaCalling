@@ -200,6 +200,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const containerRect = buttonRow.getBoundingClientRect();
     const btnRect = noBtn.getBoundingClientRect();
+    const yesRect = yesBtn.getBoundingClientRect();
 
     const containerWidth = containerRect.width;
     const containerHeight = containerRect.height;
@@ -212,16 +213,42 @@ document.addEventListener("DOMContentLoaded", () => {
     const currentLeft = btnRect.left - containerRect.left;
     const currentTop = btnRect.top - containerRect.top;
 
+    const yesLeft = yesRect.left - containerRect.left;
+    const yesTop = yesRect.top - containerRect.top;
+    const yesRight = yesLeft + yesRect.width;
+    const yesBottom = yesTop + yesRect.height;
+
     let targetLeft;
     let targetTop;
-    // Ensure noticeable movement
+    let tries = 0;
+    // Ensure noticeable movement and avoid overlapping the Yes button when possible
     do {
       targetLeft = padding + Math.random() * maxLeft;
       targetTop = padding + Math.random() * maxTop;
-    } while (
-      Math.abs(targetLeft - currentLeft) < 24 &&
-      Math.abs(targetTop - currentTop) < 24
-    );
+
+      const targetRight = targetLeft + btnRect.width;
+      const targetBottom = targetTop + btnRect.height;
+
+      const overlapsYes =
+        targetLeft < yesRight &&
+        targetRight > yesLeft &&
+        targetTop < yesBottom &&
+        targetBottom > yesTop;
+
+      const movedEnough =
+        Math.abs(targetLeft - currentLeft) >= 24 ||
+        Math.abs(targetTop - currentTop) >= 24;
+
+      if (!overlapsYes && movedEnough) {
+        break;
+      }
+
+      tries += 1;
+      // After several tries, relax the "overlapsYes" rule to avoid infinite loop in tight spaces
+      if (tries > 20 && movedEnough) {
+        break;
+      }
+    } while (true);
 
     noBtn.classList.add("shake");
     setTimeout(() => noBtn.classList.remove("shake"), 260);
